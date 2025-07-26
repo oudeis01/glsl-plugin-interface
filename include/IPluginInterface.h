@@ -4,6 +4,9 @@
 #include <string>
 #include <map>
 
+// Plugin ABI version (increment when interface changes)
+#define PLUGIN_ABI_VERSION 1
+
 /**
  * @brief Common interface for all GLSL shader library plugins
  */
@@ -15,6 +18,8 @@ public:
     virtual const char* getName() const = 0;
     virtual const char* getVersion() const = 0;
     virtual const char* getAuthor() const = 0;
+    virtual const PluginInfo& getPluginInfo() const = 0;
+    virtual const char* getPath() const = 0;
     
     // Function search (O(1) performance with hash map)
     virtual const GLSLFunction* findFunction(const std::string& name) const = 0;
@@ -57,5 +62,3 @@ extern "C" {
     int getPluginABIVersion();
 }
 
-// Plugin ABI version (increment when interface changes)
-#define PLUGIN_ABI_VERSION 1
