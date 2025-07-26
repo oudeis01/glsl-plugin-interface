@@ -2,6 +2,7 @@
 #include "../include/IPluginInterface.h"
 #include <unordered_map>
 #include <algorithm>
+#include <set>
 
 /**
  * @brief Base class for implementing GLSL shader library plugins
