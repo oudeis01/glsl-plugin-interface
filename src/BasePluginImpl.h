@@ -13,7 +13,7 @@ protected:
     const PluginInfo& plugin_info;
     const std::vector<GLSLFunction>& functions;
     const std::unordered_map<std::string, const GLSLFunction*>& function_map;
-    std::string plugin_path;
+    mutable std::string plugin_path;  // mutable로 변경하여 런타임 설정 가능
     
 public:
     BasePluginImpl(const PluginInfo& info, 
@@ -43,6 +43,10 @@ public:
     
     const char* getPath() const override { 
         return plugin_path.c_str(); 
+    }
+    
+    void setPath(const std::string& path) override {
+        plugin_path = path;
     }
     
     // Function search (O(1) performance with hash map)

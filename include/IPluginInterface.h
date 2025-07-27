@@ -20,6 +20,7 @@ public:
     virtual const char* getAuthor() const = 0;
     virtual const PluginInfo& getPluginInfo() const = 0;
     virtual const char* getPath() const = 0;
+    virtual void setPath(const std::string& path) = 0;
     
     // Function search (O(1) performance with hash map)
     virtual const GLSLFunction* findFunction(const std::string& name) const = 0;
