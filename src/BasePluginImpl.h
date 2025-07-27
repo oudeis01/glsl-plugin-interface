@@ -13,12 +13,14 @@ protected:
     const PluginInfo& plugin_info;
     const std::vector<GLSLFunction>& functions;
     const std::unordered_map<std::string, const GLSLFunction*>& function_map;
+    std::string plugin_path;
     
 public:
     BasePluginImpl(const PluginInfo& info, 
                    const std::vector<GLSLFunction>& funcs,
-                   const std::unordered_map<std::string, const GLSLFunction*>& func_map)
-        : plugin_info(info), functions(funcs), function_map(func_map) {}
+                   const std::unordered_map<std::string, const GLSLFunction*>& func_map,
+                   const std::string& path = "")
+        : plugin_info(info), functions(funcs), function_map(func_map), plugin_path(path) {}
     
     virtual ~BasePluginImpl() = default;
     
@@ -33,6 +35,14 @@ public:
     
     const char* getAuthor() const override { 
         return plugin_info.author.c_str(); 
+    }
+    
+    const PluginInfo& getPluginInfo() const override { 
+        return plugin_info; 
+    }
+    
+    const char* getPath() const override { 
+        return plugin_path.c_str(); 
     }
     
     // Function search (O(1) performance with hash map)

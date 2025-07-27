@@ -42,6 +42,9 @@ struct PluginInfo {
     std::string version;
     std::string author;
     
+    // Default constructor
+    PluginInfo() = default;
+    
     PluginInfo(const std::string& n, const std::string& v, const std::string& a)
         : name(n), version(v), author(a) {}
 };
