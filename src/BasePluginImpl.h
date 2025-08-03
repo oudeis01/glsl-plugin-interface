@@ -13,7 +13,11 @@ protected:
     const PluginInfo& plugin_info;
     const std::vector<GLSLFunction>& functions;
     const std::unordered_map<std::string, const GLSLFunction*>& function_map;
+<<<<<<< HEAD
     mutable std::string plugin_path;  // mutable로 변경하여 런타임 설정 가능
+=======
+    std::string plugin_path;
+>>>>>>> 90a7091 (align with new interface)
     
 public:
     BasePluginImpl(const PluginInfo& info, 
@@ -37,12 +41,21 @@ public:
         return plugin_info.author.c_str(); 
     }
     
+<<<<<<< HEAD
     const PluginInfo& getPluginInfo() const override { 
         return plugin_info; 
     }
     
     const char* getPath() const override { 
         return plugin_path.c_str(); 
+=======
+    const PluginInfo& getPluginInfo() const override {
+        return plugin_info;
+    }
+    
+    const char* getPath() const override {
+        return plugin_path.c_str();
+>>>>>>> 90a7091 (align with new interface)
     }
     
     void setPath(const std::string& path) override {
